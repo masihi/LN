@@ -14,3 +14,7 @@ fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait slash.fst | do
 # Compila e gera a versão gráfica do transdutor que processa os dias 01 ou 1
 fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  days.txt | fstarcsort > days.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait days.fst | dot -Tpdf  > days.pdf
+
+# Compila e gera a versão gráfica do transdutor que processa os anos de 2001...2099
+fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  years.txt | fstarcsort > years.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait years.fst | dot -Tpdf  > years.pdf
