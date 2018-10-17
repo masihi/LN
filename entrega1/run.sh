@@ -10,3 +10,7 @@ fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait mmm2mm.fst | d
 # Compila e gera a versão gráfica do transdutor que processa a barra
 fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  slash.txt | fstarcsort > slash.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait slash.fst | dot -Tpdf  > slash.pdf
+
+# Compila e gera a versão gráfica do transdutor que processa os dias 01 ou 1
+fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  days.txt | fstarcsort > days.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait days.fst | dot -Tpdf  > days.pdf
