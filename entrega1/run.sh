@@ -74,7 +74,7 @@ fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait ano.fst | dot 
 fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  barra.txt | fstarcsort > barra.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait barra.fst | dot -Tpdf  > barra.pdf
 
-
+# trasndutor numerico2texto
 fstconcat dia.fst barra.fst  > numerico2texto1.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait numerico2texto1.fst | dot -Tpdf  > numerico2texto1.pdf
 
@@ -86,3 +86,25 @@ fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait numerico2texto
 
 fstconcat numerico2texto3.fst ano.fst  > numerico2texto.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait numerico2texto.fst | dot -Tpdf  > numerico2texto.pdf
+
+# transdutor misto2texto
+
+fstconcat dia.fst barra.fst  > misto2texto1.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait misto2texto1.fst | dot -Tpdf  > misto2texto1.pdf
+
+# traduzir SET _setembro
+fstcompose mmm2mm.fst mes.fst > closuremes.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait closuremes.fst | dot -Tpdf  > closuremes.pdf
+
+fstconcat misto2texto1.fst closuremes.fst  > misto2texto2.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait misto2texto2.fst | dot -Tpdf  > misto2texto2.pdf
+
+fstconcat misto2texto2.fst barra.fst  > misto2texto3.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait misto2texto3.fst | dot -Tpdf  > misto2texto3.pdf
+
+fstconcat misto2texto2.fst ano.fst  > misto2texto.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait misto2texto.fst | dot -Tpdf  > misto2texto.pdf
+
+# transdutor data2texto
+fstunion numerico2texto.fst misto2texto.fst > data2texto.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait data2texto.fst | dot -Tpdf  > data2texto.pdf
