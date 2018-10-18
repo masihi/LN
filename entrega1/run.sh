@@ -108,3 +108,58 @@ fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait misto2texto.fs
 # transdutor data2texto
 fstunion numerico2texto.fst misto2texto.fst > data2texto.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait data2texto.fst | dot -Tpdf  > data2texto.pdf
+
+# testar os transdutores
+#fstproject --project_output misto2numerico.fst | fstrmepsilon | fsttopsort | fstprint --acceptor --isymbols=syms.txt
+
+# compilar testes
+
+fstcompile --isymbols=syms.txt --osymbols=syms.txt  test/77917_misto.txt | fstarcsort > test/77917_misto.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/77917_misto.fst | dot -Tpdf > test/77917_misto.pdf
+
+fstcompile --isymbols=syms.txt --osymbols=syms.txt  test/78042_misto.txt | fstarcsort > test/78042_misto.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/78042_misto.fst | dot -Tpdf > test/78042_misto.pdf
+
+fstcompile --isymbols=syms.txt --osymbols=syms.txt  test/77917_pt.txt | fstarcsort > test/77917_pt.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/77917_pt.fst | dot -Tpdf > test/77917_pt.pdf
+
+fstcompile --isymbols=syms.txt --osymbols=syms.txt  test/78042_pt.txt | fstarcsort > test/78042_pt.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/78042_pt.fst | dot -Tpdf > test/78042_pt.pdf
+
+fstcompile --isymbols=syms.txt --osymbols=syms.txt  test/77917_numerico.txt | fstarcsort > test/77917_numerico.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/77917_numerico.fst | dot -Tpdf > test/77917_numerico.pdf
+
+fstcompile --isymbols=syms.txt --osymbols=syms.txt  test/78042_numerico.txt | fstarcsort > test/78042_numerico.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/78042_numerico.fst | dot -Tpdf > test/78042_numerico.pdf
+
+# Test
+
+fstcompose test/77917_misto.fst misto2numerico.fst > test/77917_misto2numerico.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/77917_misto2numerico.fst | dot -Tpdf > test/77917_misto2numerico.pdf
+
+fstcompose test/78042_misto.fst misto2numerico.fst > test/78042_misto2numerico.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/78042_misto2numerico.fst | dot -Tpdf > test/78042_misto2numerico.pdf
+
+fstcompose test/77917_pt.fst pt2en.fst > test/77917_pt2en.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/77917_pt2en.fst | dot -Tpdf > test/77917_pt2en.pdf
+
+fstcompose test/78042_pt.fst pt2en.fst > test/78042_pt2en.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/78042_pt2en.fst | dot -Tpdf > test/78042_pt2en.pdf
+
+fstcompose test/77917_numerico.fst numerico2texto.fst > test/77917_numerico2texto.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/77917_numerico2texto.fst | dot -Tpdf > test/77917_numerico2texto.pdf
+
+fstcompose test/78042_numerico.fst numerico2texto.fst > test/78042_numerico2texto.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/78042_numerico2texto.fst | dot -Tpdf > test/78042_numerico2texto.pdf
+
+fstcompose test/77917_misto.fst misto2texto.fst > test/77917_misto2texto.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/77917_misto2texto.fst | dot -Tpdf > test/77917_misto2texto.pdf
+
+fstcompose test/78042_misto.fst misto2texto.fst > test/78042_misto2texto.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/78042_misto2texto.fst | dot -Tpdf > test/78042_misto2texto.pdf
+
+fstcompose test/77917_misto.fst data2texto.fst > test/77917_data2texto.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/77917_data2texto.fst | dot -Tpdf > test/77917_data2texto.pdf
+
+fstcompose test/78042_numerico.fst data2texto.fst > test/78042_data2texto.fst
+fstdraw --isymbols=syms.txt --osymbols=syms.txt  test/78042_data2texto.fst | dot -Tpdf > test/78042_data2texto.pdf
