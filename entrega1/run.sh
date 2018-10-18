@@ -54,5 +54,10 @@ fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait en2pt2.fst | d
 fstconcat en2pt2.fst years.fst  > en2pt.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait en2pt.fst | dot -Tpdf  > en2pt.pdf
 
+# Traduz de pt para en
 fstinvert en2pt.fst pt2en.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait pt2en.fst | dot -Tpdf  > pt2en.pdf
+
+# traduz dia para texto
+fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  dia.txt | fstarcsort > dia.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait dia.fst | dot -Tpdf  > dia.pdf
