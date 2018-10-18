@@ -69,3 +69,20 @@ fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait mes.fst | dot 
 # traduz ano para texto
 fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  ano.txt | fstarcsort > ano.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait ano.fst | dot -Tpdf  > ano.pdf
+
+# transdutor extra para de barra se ler de
+fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  barra.txt | fstarcsort > barra.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait barra.fst | dot -Tpdf  > barra.pdf
+
+
+fstconcat dia.fst barra.fst  > numerico2texto1.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait numerico2texto1.fst | dot -Tpdf  > numerico2texto1.pdf
+
+fstconcat numerico2texto1.fst mes.fst  > numerico2texto2.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait numerico2texto2.fst | dot -Tpdf  > numerico2texto2.pdf
+
+fstconcat numerico2texto2.fst barra.fst  > numerico2texto3.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait numerico2texto3.fst | dot -Tpdf  > numerico2texto3.pdf
+
+fstconcat numerico2texto3.fst ano.fst  > numerico2texto.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait numerico2texto.fst | dot -Tpdf  > numerico2texto.pdf
