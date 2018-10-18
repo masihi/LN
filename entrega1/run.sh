@@ -65,3 +65,7 @@ fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait dia.fst | dot 
 # traduz mes para texto
 fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  mes.txt | fstarcsort > mes.fst
 fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait mes.fst | dot -Tpdf  > mes.pdf
+
+# traduz ano para texto
+fstcompile --isymbols=syms.txt --osymbols=syms-out.txt  ano.txt | fstarcsort > ano.fst
+fstdraw    --isymbols=syms.txt --osymbols=syms-out.txt --portrait ano.fst | dot -Tpdf  > ano.pdf
